@@ -1,0 +1,36 @@
+{
+  "name": "react-kanban",
+  "version": "1.0.0",
+  "description": "kanban with react",
+  "main": "app/index.js",
+  "dependencies": {
+    "node-uuid": "^1.4.7",
+    "react": "^0.14.6",
+    "react-dom": "^0.14.6"
+  },
+  "devDependencies": {
+    "babel-core": "^6.3.26",
+    "babel-loader": "^6.2.0",
+    "babel-preset-es2015": "^6.3.13",
+    "babel-preset-react": "^6.3.13",
+    "babel-preset-react-hmre": "^1.0.1",
+    "babel-preset-survivejs-kanban": "^0.1.1",
+    "css-loader": "^0.23.1",
+    "html-webpack-plugin": "^1.7.0",
+    "html-webpack-template": "^2.5.1",
+    "install": "^0.4.1",
+    "npm": "^3.5.2",
+    "style-loader": "^0.13.0",
+    "webpack": "^1.12.9",
+    "webpack-dev-server": "^1.14.0",
+    "webpack-merge": "^0.4.0"
+  },
+  "scripts": {
+    "build": "webpack",
+    "start": "webpack-dev-server",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Nick Gnd",
+  "license": "ISC",
+  "private": true
+}
