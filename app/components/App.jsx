@@ -1,13 +1,14 @@
 // to generate unique uuid
 import uuid from 'node-uuid';
 import React from 'react';
-
 import Notes from './Notes.jsx';
 
 export default class App extends React.Component {
+  // Set props and state
   constructor(props) {
     super(props);
 
+    // Initial notes
     this.state = {
       notes: [
         {
@@ -33,9 +34,11 @@ export default class App extends React.Component {
     return (
       <div>
 
-        <button onClick={this.addNote}>+</button>
+        <button className="add-note" onClick={this.addNote}>+</button>
 
-        <Notes notes={notes} onEdit={this.editNote}/>
+        <Notes notes={notes}
+          onEdit={this.editNote}
+          onDelete={this.deleteNote} />
 
       </div>
       );
@@ -78,6 +81,12 @@ export default class App extends React.Component {
     });
 
     this.setState({notes});
+  };
+
+  deleteNote = (id) => {
+    this.setState({
+      notes: this.state.notes.filter((note) => note.id != id)
+    });
   };
 
 

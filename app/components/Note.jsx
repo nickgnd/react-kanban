@@ -4,6 +4,7 @@ import React from 'react';
 // we want from the passed props easily.
 
 export default class Note extends React.Component {
+
   constructor(props) {
     super(props);
 
@@ -12,6 +13,8 @@ export default class Note extends React.Component {
       editing: false
     };
   }
+
+  // render() define the lifecycle hooks
   render() {
     // Render the component differently based on state
     if(this.state.editing) {
@@ -20,6 +23,8 @@ export default class Note extends React.Component {
 
     return this.renderNote();
   }
+
+  // below the are the methods
   renderEdit = () => {
     // Deal with blur and input handlers. THese map to DOM events
     return <input type="text"
@@ -28,22 +33,40 @@ export default class Note extends React.Component {
       onBlur={this.finishEdit}
       onKeyPress={this.checkEnter} />;
   };
+
   renderNote = () => {
+
+    const onDelete = this.props.onDelete;
+
     // If the user clicks a normal note, trigger editing logic
-    return <div onClick={this.edit}>{this.props.task}</div>
+    return (
+      <div onClick={this.edit}>
+        <span className="task">{this.props.task}</span>
+        {onDelete ? this.renderDelete() : null }
+      </div>
+      );
   };
+
+  renderDelete = () => {
+    return <button
+      className="delete-note"
+      onClick={this.props.onDelete}>x</button>;
+  };
+
   edit = () => {
     // Enter edit mode
     this.setState({
       editing: true
     });
   };
+
   checkEnter = (e) => {
     // The user hit *enter*, let's finish up
     if(e.key === 'Enter') {
       this.finishEdit(e);
     }
   };
+
   finishEdit = (e) => {
     // 'Note' will trigger an optional 'onEdit' callback once it
     // has a new value. We will use this to communicate the change to
