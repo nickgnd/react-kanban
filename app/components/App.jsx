@@ -1,10 +1,10 @@
 import AltContainer from 'alt-container';
-
 import React from 'react';
-import Notes from './Notes.jsx';
 
-import NoteActions from '../actions/NoteActions';
-import NoteStore from '../stores/NoteStore';
+import Lanes from './Lanes.jsx';
+
+import LaneActions from '../actions/LaneActions';
+import LaneStore from '../stores/LaneStore';
 
 export default class App extends React.Component {
 
@@ -13,36 +13,25 @@ export default class App extends React.Component {
     return (
       <div>
 
-        <button className="add-note" onClick={this.addNote}>+</button>
+        <button className="add-lane" onClick={this.addLane}>+</button>
 
         {/* AltContainer allows us to bind data to its immediate children.
         In this case, it injects the notes property in to Notes. */}
         <AltContainer
-          stores={[NoteStore]}
+          stores={[LaneStore]}
           inject={{
-            notes: () => NoteStore.getState().notes
+            lanes: () => LaneStore.getState().lanes
           }} >
 
-        <Notes
-          onEdit={this.editNote}
-          onDelete={this.deleteNote} />
+        <Lanes />
 
         </AltContainer>
       </div>
       );
   }
 
-  addNote() {
-    NoteActions.create({task: 'New task'});
+  addLane() {
+    LaneActions.create({task: 'New lane'});
   }
-
-  deleteNote(id) {
-    NoteActions.delete(id);
-  }
-
-  editNote(id, task) {
-    NoteActions.update({id, task});
-  }
-
 
 }
