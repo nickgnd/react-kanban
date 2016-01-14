@@ -22,7 +22,10 @@
     "babel-preset-react": "^6.3.13",
     "babel-preset-react-hmre": "^1.0.1",
     "babel-preset-survivejs-kanban": "^0.1.1",
+    "clean-webpack-plugin": "^0.1.6",
     "css-loader": "^0.23.1",
+    "extract-text-webpack-plugin": "^1.0.1",
+    "gh-pages": "^0.8.0",
     "html-webpack-plugin": "^1.7.0",
     "html-webpack-template": "^2.5.1",
     "install": "^0.4.1",
@@ -35,6 +38,8 @@
   "scripts": {
     "build": "webpack",
     "start": "webpack-dev-server",
+    "stats": "webpack --profile --json > stats.json",
+    "deploy": "gh-pages -d build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Nick Gnd",
